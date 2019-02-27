@@ -1,2 +1,1 @@
-Tic-Tac-Toe built in React. Resource: Official React Docs Tutorial
-
+Tic-Tac-Toe built in React. Resource: Official React Docs 
