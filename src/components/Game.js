@@ -2,29 +2,52 @@ import React from "react";
 import Board from "./Board";
 
 class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null)
-        }
-      ],
-      stepNumber: 0,
-      xIsNext: true
-    };
-  }
+  /* Refactoring state to React 16 */
+
+  state = {
+    history: [
+      {
+        squares: Array(9).fill(null)
+      }
+    ],
+    stepNumber: 0,
+    xIsNext: true
+  };
+
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     history: [
+  //       {
+  //         squares: Array(9).fill(null)
+  //       }
+  //     ],
+  //     stepNumber: 0,
+  //     xIsNext: true
+  //   };
+  // }
 
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
+    const locations = [
+      [1, 1],
+      [2, 1],
+      [3, 1],
+      [1, 2],
+      [2, 2],
+      [3, 2],
+      [1, 3],
+      [2, 3],
+      [3, 3]
+    ];
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
     squares[i] = this.state.xIsNext ? "X" : "O";
     this.setState({
-      history: history.concat([{ squares: squares }]),
+      history: history.concat([{ squares: squares, location: locations[i] }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext
     });
@@ -44,7 +67,11 @@ class Game extends React.Component {
     let status;
 
     const moves = history.map((step, move) => {
-      const desc = move ? `Go to step # ${move}` : `Go back to start`;
+      const desc = move
+        ? `Go to step # ${move} at C${history[move].location[0]}  R${
+            history[move].location[1]
+          }`
+        : `Go back to start`;
       return (
         <li key={move}>
           <button className="button-move" onClick={() => this.hopTo(move)}>
