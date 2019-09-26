@@ -71,5 +71,10 @@ h1 {
 }
 
 .button-selected-bold {
+  background: #333333;
+  border: none;
+  color: #cab6b6;
+  font: 16px Roboto;
+  margin-bottom: 0.2em;
   font-weight: 500;
 }
