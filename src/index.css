@@ -69,3 +69,7 @@ h1 {
   font: 16px Roboto;
   margin-bottom: 0.2em;
 }
+
+.button-selected-bold {
+  font-weight: 500;
+}
