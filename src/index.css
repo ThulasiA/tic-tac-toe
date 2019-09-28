@@ -70,7 +70,8 @@ h1 {
   margin-bottom: 0.2em;
 }
 
-.button-selected-bold {
+.button-selected-bold,
+.btn-toggle {
   background: #333333;
   border: none;
   color: #cab6b6;
