@@ -11,7 +11,8 @@ class Game extends React.Component {
       }
     ],
     stepNumber: 0,
-    xIsNext: true
+    xIsNext: true,
+    isAscending: true
   };
 
   // constructor(props) {
@@ -60,6 +61,12 @@ class Game extends React.Component {
     });
   }
 
+  handleToggle() {
+    this.setState({
+      isAscending: !this.state.isAscending
+    });
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber]; //history[history.length - 1];
@@ -89,6 +96,11 @@ class Game extends React.Component {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
+    const isAscending = this.state.isAscending;
+    if (!isAscending) {
+      moves.reverse();
+    }
+
     return (
       <div className="game">
         <div className="game-board">
@@ -96,7 +108,9 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div className="status">{status}</div>
-          <button className="btn-toggle">Toggle</button>
+          <button className="btn-toggle" onClick={() => this.handleToggle()}>
+            Toggle
+          </button>
           <ol>{moves}</ol>
         </div>
       </div>
