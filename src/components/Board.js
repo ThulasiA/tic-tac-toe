@@ -12,6 +12,7 @@ class Board extends React.Component {
   }
 
   render() {
+    // Refactoring - Turning hard coded renderSquare to 2 for loops
     let squares = [];
     for (let i = 0; i < 3; i++) {
       let row = [];
