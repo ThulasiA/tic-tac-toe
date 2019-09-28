@@ -109,7 +109,7 @@ class Game extends React.Component {
         <div className="game-info">
           <div className="status">{status}</div>
           <button className="btn-toggle" onClick={() => this.handleToggle()}>
-            Toggle
+            {isAscending ? "Sort Descendingly" : "Sort Ascendingly"}
           </button>
           <ol>{moves}</ol>
         </div>
