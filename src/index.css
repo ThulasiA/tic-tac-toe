@@ -42,6 +42,10 @@ h1 {
   width: 34px;
 }
 
+.square--won {
+  background-color: palevioletred;
+}
+
 .square:focus {
   outline: none;
 }
