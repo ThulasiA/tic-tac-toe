@@ -90,8 +90,11 @@ class Game extends React.Component {
       );
     });
 
+    // Add status for draw
     if (winner) {
       status = "Winner is " + winner.winner;
+    } else if (!current.squares.includes(null)) {
+      status = "Game ended in Draw";
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
